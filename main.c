@@ -159,13 +159,43 @@ int main() {
             printf("=======================================================================\n");
             printf("=================== Veuillez choisir une option : ====================\n");
             printf("||                                                                   ||\n");
-            printf("|| 1 -    ||\n");
-            printf("|| 2 -                ||\n");
-            printf("|| 3 -                                                              ||\n");
-            printf("|| 5 - Quitter le menu Read                                          ||\n");
+            printf("|| 1 - Lire tous les documents d'une collection                      ||\n");
+            printf("|| 2 - Lire tous les documents d'une collection avec le type Human   ||\n");
+            printf("|| 3 - Quittez le menu Read                                          ||\n");
             printf("||                                                                   ||\n");
             printf("========================================================================\n");
-
+            int choixRead;
+            printf("Votre choix : ");
+            int scanResultRead = scanf("%d", &choixRead);
+            if (scanResultRead < 1 || choixRead < 1 || choixRead > 3) {
+                printf("Choix invalide. Veuillez entrer un nombre entre 1 et 3.\n");
+                continue;
+            }
+            printf("\n");
+            if(choixRead == 1){
+                printf("Veuillez saisir le nom de la collection a lire : ");
+                char nomCollection[100];
+                int resultScanF = scanf("%s", nomCollection);
+                if (resultScanF < 1 ) {
+                    printf("Erreur lors de la saisie du nom de la collection.\n");
+                    continue;
+                }
+                read_all_documents(client,"actiaDataBase",nomCollection);
+            }
+            else if(choixRead == 2){
+                printf("Veuillez saisir le nom de la collection a lire : ");
+                char nomCollection[100];
+                int resultScanF = scanf("%s", nomCollection);
+                if (resultScanF < 1 ) {
+                    printf("Erreur lors de la saisie du nom de la collection.\n");
+                    continue;
+                }
+                read_filtered_documentsHuman(client,"actiaDataBase",nomCollection);
+            }
+            else if(choixRead == 3){
+                //Quitter le menu Read
+                continue;
+            }
         }
         else if(choix == 3){
             printf("\n=======================================================================\n");
