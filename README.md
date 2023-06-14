@@ -5,6 +5,9 @@
 ### Prérequis
 
 - Avoir le dossier compressé "**MongoDBC.zip**" (Vous devez forcément avoir le fichier ZIP, car dans le dépôt GitHub, il n'y a pas le driver).
+
+Voici le lien du fichier ZIP du projet : https://drive.google.com/file/d/1TugkuCtDq_Uv2fcGbVKgxX6McpF0cH0c/view?usp=sharing
+
 - Avoir l'IDE **Visual Studio 2019**.
 - Un serveur MongoDB qui tourne (vous trouverez un tutoriel à l'emplacement suivant : [Cliquez ici](./../MongoDBC/Documentation/InstallationServeurMongoDB.pdf)).
 - Avoir installer le compilateur **Visual Studio 2019**.
