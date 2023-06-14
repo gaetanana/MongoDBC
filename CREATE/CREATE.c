@@ -9,8 +9,6 @@
 #include <sys/stat.h>
 #include <time.h>
 
-
-
 //-------------------- Fonctions auxiliaires --------------------
 
 /**
@@ -18,7 +16,6 @@
  * @param node
  * @return
  */
-
 json_t *xmlNodeToJson(xmlNodePtr node) { // Définition de la fonction xmlNodeToJson qui prend un pointeur vers un nœud XML en entrée et renvoie un pointeur vers un objet json_t.
 
     json_t *jsonNode = json_object(); // Création d'un nouvel objet JSON.
@@ -90,6 +87,32 @@ XmlToJsonResult xmlToJson(const char *xml) { // Définition de la fonction xmlTo
 
 
 //-------------------- Fonctions de création de documents --------------------
+
+/**
+ * Cette fonction permet de créer une collection dans la base de données 'actiaDataBase'
+ */
+void createCollection(mongoc_client_t *client,const char *db_name,const char* nomCollection){
+    mongoc_collection_t *collection;
+    bson_error_t error; // Pour stocker l'information d'erreur.
+    bson_t *doc;
+
+    mongoc_init (); // Initialisation du driver MongoDB C.
+
+    // Récupération de la collection spécifiée dans la base de données spécifiée.
+    collection = mongoc_client_get_collection (client, db_name, nomCollection);
+
+    doc = bson_new (); // Création d'un nouveau document BSON.
+    BSON_APPEND_UTF8 (doc, "value", "value"); // Ajout de la valeur donnée dans le document BSON sous la clé "value".
+
+    if (!mongoc_collection_insert_one (collection, doc, NULL, NULL, &error)) { // Insertion du document dans la collection.
+        fprintf (stderr, "%s\n", error.message); // Affichage de l'erreur.
+    }
+
+    bson_destroy (doc); // Libération de la mémoire allouée pour le document BSON.
+    mongoc_collection_destroy (collection); // Libération de la mémoire allouée pour la collection MongoDB.
+    mongoc_cleanup (); // Nettoyage du driver MongoDB C.
+    printf("Collection %s creee avec succes !\n",nomCollection);
+}
 
 /**
  * Cette fonction permet d'insérer un document dans une collection
