@@ -42,7 +42,7 @@ void update_document_from_collection (const char *db_name, const char *collectio
  * @param client
  * @param newValueType
 */
-void update_all_document_type(mongoc_client_t *client, const char* newValueType) {
+void update_all_document_type(mongoc_client_t *client,const char* db_name,const char* nomCollection, const char* newValueType) {
     mongoc_collection_t *collection;
     bson_error_t error;
     bson_t *update = NULL;
@@ -51,7 +51,7 @@ void update_all_document_type(mongoc_client_t *client, const char* newValueType)
 
     clock_t begin = 0, end;
     double time_spent;
-    collection = mongoc_client_get_collection(client, "actiaDataBase", "testCollection");
+    collection = mongoc_client_get_collection(client, db_name, nomCollection);
     if (!collection) {
         printf("Could not get collection\n");
         return;

@@ -198,18 +198,74 @@ int main() {
             }
         }
         else if(choix == 3){
+            //update_document_from_collection("actiaDataBase","testCollection","6475ad3c4a42d4efb10934f2","cha5czsfgzf4");
+            //update_all_document_type(client,"chatchat");
+
+
             printf("\n=======================================================================\n");
             printf("||                          Menu Update                                ||\n");
             printf("=======================================================================\n");
             printf("=================== Veuillez choisir une option : ====================\n");
             printf("||                                                                   ||\n");
-            printf("|| 1 -    ||\n");
-            printf("|| 2 -                ||\n");
-            printf("|| 3 -                                                              ||\n");
-            printf("|| 5 - Quitter le menu Read                                          ||\n");
+            printf("|| 1 - Modifie un document avec son ID                               ||\n");
+            printf("|| 2 - Modifie tous les documents d'une collection (le type)         ||\n");
+            printf("|| 3 - Quitter le menu Update                                        ||\n");
             printf("||                                                                   ||\n");
             printf("========================================================================\n");
+            int choixUpdate;
+            printf("Votre choix : ");
+            int resultScanf = scanf("%d", &choixUpdate);
+            if (resultScanf < 1 || choixUpdate < 1 || choixUpdate > 3) {
+                printf("Choix invalide. Veuillez entrer un nombre entre 1 et 3.\n");
+                continue;
+            }
+            printf("\n");
 
+            if(choixUpdate == 1){
+                printf("Veuillez saisir le nom de la collection dans laquelle modifier le document : ");
+                char nomCollection[100];
+                int resultScanF = scanf("%s", nomCollection);
+                if (resultScanF < 1 ) {
+                    printf("Erreur lors de la saisie du nom de la collection.\n");
+                    continue;
+                }
+                printf("Veuillez saisir l'ID du document a modifier : ");
+                char idDocument[100];
+                int resultScanFId = scanf("%s", idDocument);
+                if (resultScanFId < 1 ) {
+                    printf("Erreur lors de la saisie de l'ID du document.\n");
+                    continue;
+                }
+                printf("Veuillez saisir la nouvelle valeur : ");
+                char typeDocument[100];
+                int resultScanFType = scanf("%s", typeDocument);
+                if (resultScanFType < 1 ) {
+                    printf("Erreur lors de la saisie de la nouvelle valeur.\n");
+                    continue;
+                }
+                update_document_from_collection("actiaDataBase",nomCollection,idDocument,typeDocument);
+            }
+            else if(choixUpdate == 2){
+                printf("Veuillez saisir le nom de la collection dans laquelle modifier les documents : ");
+                char nomCollection[100];
+                int resultScanF = scanf("%s", nomCollection);
+                if (resultScanF < 1 ) {
+                    printf("Erreur lors de la saisie du nom de la collection.\n");
+                    continue;
+                }
+                printf("Veuillez saisir le nouveau type des documents : ");
+                char typeDocument[100];
+                int resultScanFType = scanf("%s", typeDocument);
+                if (resultScanFType < 1 ) {
+                    printf("Erreur lors de la saisie du nouveau type des documents.\n");
+                    continue;
+                }
+                update_all_document_type(client,"actiaDataBase",nomCollection,typeDocument);
+            }
+            else if(choixUpdate == 3){
+                //Quitter le menu Update
+                continue;
+            }
         }
         else if(choix == 4){
             printf("\n=======================================================================\n");
