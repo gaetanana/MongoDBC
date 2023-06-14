@@ -11,40 +11,49 @@ Voici le lien du fichier ZIP du projet : https://drive.google.com/file/d/1TugkuC
 - Avoir l'IDE **Visual Studio 2019**.
 - Un serveur MongoDB qui tourne (vous trouverez un tutoriel à l'emplacement suivant : https://github.com/gaetanana/MongoDBC/blob/main/Documentation/InstallationServeurMongoDB.pdf.
 - Avoir installer le compilateur **Visual Studio 2019**.
+- Vous devrez avoir les fichiers binaires dans vos variables d'environnement.
+
+### Fichiers binaires dans les variables d'environnement
+
+Pour que le projet fonctionne, vous devez avoir les fichiers binaires des dépendances dans vos variables d'environnement.
+
 
 ### Les étapes pour l'IDE Visual Studio 2019
 
 
 1. Décompresser le dossier "**MongoDBC.zip**" dans un dossier de votre choix.
 
-![ExtractionFichierZIP.png](imgREADME%2FVISUALSTUDIO%2FExtractionFichierZIP.png)
+![ExtractionFichierZIP.png](Documentation%2FimgREADME%2FVISUALSTUDIO%2FExtractionFichierZIP.png)
 
 2. Ouvrir le projet avec Visual Studio (dossier MongoDBC).
 
-![OuvertureProjetVisualSTUDIO.png](imgREADME%2FVISUALSTUDIO%2FOuvertureProjetVisualSTUDIO.png)
+![OuvertureProjetVisualSTUDIO.png](Documentation%2FimgREADME%2FVISUALSTUDIO%2FOuvertureProjetVisualSTUDIO.png)
 
 À ce stade, vous devriez avoir les messages d'erreurs suivantes :
 
-![ecranVISUALSTUDIO.png](imgREADME%2FVISUALSTUDIO%2FecranVISUALSTUDIO.png)
-
+![ecranVISUALSTUDIO.png](Documentation%2FimgREADME%2FVISUALSTUDIO%2FecranVISUALSTUDIO.png)
 C'est normal, car par défaut Visual Studio 2019 choisit la version 64 bits pour compiler le projet.
 Il faut donc changer la configuration du projet pour qu'il tourne en 32 bits.
 
 3. Pour changer la configuration du projet, vous devez modifier la configuration qui est
 à côté du bouton d'exécution du projet, vous devez faire défiler et cliquez sur "**Gérez les configurations..**".
 
-![ConfigurationVersion.png](imgREADME%2FVISUALSTUDIO%2FConfigurationVersion.png)
+![ConfigurationVersion.png](Documentation%2FimgREADME%2FVISUALSTUDIO%2FConfigurationVersion.png)
+
 4. Supprimez la configuration "**x64**" en la sélectionnant et en cliquant sur la croix rouge.
 
-![version1.png](imgREADME%2FVISUALSTUDIO%2Fversion1.png)
+![version1.png](Documentation%2FimgREADME%2FVISUALSTUDIO%2Fversion1.png)
+
 5. Ajoutez une nouvelle configuration en cliquant sur la croix verte.
 
-![AjoutConfiguration.png](imgREADME%2FVISUALSTUDIO%2FAjoutConfiguration.png)
+![AjoutConfiguration.png](Documentation%2FimgREADME%2FVISUALSTUDIO%2FAjoutConfiguration.png)
+
 6. Dans la fenêtre qui s'ouvre, sélectionnez "**x86-Debug**" et cliquez sur "**Sélectionner**", faite le même chose pour **x86-Release**.
 
 7. Enfin executez la classe **main.c** en cliquant sur la flèche verte.
 
-![resultat.png](imgREADME%2FVISUALSTUDIO%2Fresultat.png)
+![resultat.png](Documentation%2FimgREADME%2FVISUALSTUDIO%2Fresultat.png)
+
 
 
 Une console s'ouvre et affiche le résultat de l'exécution du programme.
@@ -77,4 +86,5 @@ Actuellement, dans le main vous avez toutes les fonctions disponibles et il y 3 
 
 Ces arguments, vous pouvez les changer dans le main, selon vos besoins.
 
-![captureFonctions.png](imgREADME%2FVISUALSTUDIO%2FcaptureFonctions.png)
+
+![captureFonctions.png](Documentation%2FimgREADME%2FVISUALSTUDIO%2FcaptureFonctions.png)
