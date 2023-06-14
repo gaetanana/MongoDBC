@@ -92,11 +92,28 @@ XmlToJsonResult xmlToJson(const char *xml) { // Définition de la fonction xmlTo
  * Cette fonction permet de créer une collection dans la base de données 'actiaDataBase'
  */
 void createCollection(mongoc_client_t *client,const char *db_name,const char* nomCollection){
+    mongoc_database_t *database;
     mongoc_collection_t *collection;
     bson_error_t error; // Pour stocker l'information d'erreur.
     bson_t *doc;
+    char **strv;
+    int i;
 
     mongoc_init (); // Initialisation du driver MongoDB C.
+
+    // Récupération de la base de données spécifiée
+    database = mongoc_client_get_database(client, db_name);
+
+    // Récupération de la liste des collections
+    strv = mongoc_database_get_collection_names(database, &error);
+
+    // Parcourir la liste pour vérifier si la collection existe
+    for (i = 0; strv[i]; i++) {
+        if (strcmp(strv[i], nomCollection) == 0) {
+            printf("La collection %s existe deja !\n", nomCollection);
+            return; // Si la collection existe, on arrête la fonction
+        }
+    }
 
     // Récupération de la collection spécifiée dans la base de données spécifiée.
     collection = mongoc_client_get_collection (client, db_name, nomCollection);
@@ -110,9 +127,11 @@ void createCollection(mongoc_client_t *client,const char *db_name,const char* no
 
     bson_destroy (doc); // Libération de la mémoire allouée pour le document BSON.
     mongoc_collection_destroy (collection); // Libération de la mémoire allouée pour la collection MongoDB.
+    mongoc_database_destroy(database); // Libération de la mémoire allouée pour la base de données MongoDB.
     mongoc_cleanup (); // Nettoyage du driver MongoDB C.
     printf("Collection %s creee avec succes !\n",nomCollection);
 }
+
 
 /**
  * Cette fonction permet d'insérer un document dans une collection

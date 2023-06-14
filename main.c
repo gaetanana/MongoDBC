@@ -36,7 +36,6 @@ int main() {
     //delete_all_documents_from_collection(client,"actiaDataBase","testCollection");
 
    //----------------------------------------- Application pour l'utilisateur -----------------------------------------//
-
     while (true) {
         printf("\n========================================================\n");
         printf("||             Application MongoDB en C               ||\n");
@@ -52,7 +51,11 @@ int main() {
         printf("========================================================\n");
         int choix;
         printf("Votre choix : ");
-        scanf("%d", &choix);
+        int scanResult = scanf("%d", &choix);
+        if (scanResult < 1 || choix < 1 || choix > 5) {
+            printf("Choix invalide. Veuillez entrer un nombre entre 1 et 5.\n");
+            continue;
+        }
         printf("\n");
 
         if(choix == 1){
@@ -73,17 +76,82 @@ int main() {
 
             int choixCreate;
             printf("Votre choix : ");
-            scanf("%d", &choixCreate);
+            scanResult = scanf("%d", &choixCreate);
+            if (scanResult < 1 || choixCreate < 1 || choixCreate > 5) {
+                printf("Choix invalide. Veuillez entrer un nombre entre 1 et 5.\n");
+                continue;
+            }
             printf("\n");
+
             if(choixCreate == 1){
+                //Création d'une collection
                 printf("Veuillez saisir le nom de la collection a creer : ");
                 char nomCollection[100];
-                scanf("%s", nomCollection);
+                int resultScanF = scanf("%s", nomCollection);
+                if (resultScanF < 1 ) {
+                    printf("Erreur lors de la saisie du nom de la collection.\n");
+                    continue;
+                }
                 createCollection(client,"actiaDataBase",nomCollection);
-
             }
-
-
+            else if(choixCreate == 2){
+                //Création d'un document avec un fichier XML en valeur
+                printf("Veuillez saisir le nom de la collection dans laquelle inserer le document : ");
+                char nomCollection[100];
+                int resultScanF = scanf("%s", nomCollection);
+                if (resultScanF < 1 ) {
+                    printf("Erreur lors de la saisie du nom de la collection.\n");
+                    continue;
+                }
+                printf("Veuillez saisir le chemin du fichier XML a inserer : ");
+                char cheminFichier[100];
+                int resultScanFChemin = scanf("%s", cheminFichier);
+                if (resultScanFChemin < 1 ) {
+                    printf("Erreur lors de la saisie du chemin du fichier.\n");
+                    continue;
+                }
+                insert_xml_into_collection(client,"actiaDataBase",nomCollection,cheminFichier);
+            }
+            else if(choixCreate == 3){
+                //Création de plusieurs documents avec les fichiers XML d'un dossier (sans charger les fichiers en mémoire)
+                printf("Veuillez saisir le nom de la collection dans laquelle inserer les documents : ");
+                char nomCollection[100];
+                int resultScanF = scanf("%s", nomCollection);
+                if (resultScanF < 1 ) {
+                    printf("Erreur lors de la saisie du nom de la collection.\n");
+                    continue;
+                }
+                printf("Veuillez saisir le chemin du dossier contenant les fichiers XML a inserer : ");
+                char cheminDossier[100];
+                int resultScanFChemin = scanf("%s", cheminDossier);
+                if (resultScanFChemin < 1 ) {
+                    printf("Erreur lors de la saisie du chemin du dossier.\n");
+                    continue;
+                }
+                process_files_one_by_one(client,"actiaDataBase",nomCollection,cheminDossier);
+                            }
+            else if(choixCreate == 4){
+                //Création de plusieurs documents avec les fichiers XML d'un dossier (en chargeant les fichiers en mémoire)
+                printf("Veuillez saisir le nom de la collection dans laquelle inserer les documents : ");
+                char nomCollection[100];
+                int resultScanF = scanf("%s", nomCollection);
+                if (resultScanF < 1 ) {
+                    printf("Erreur lors de la saisie du nom de la collection.\n");
+                    continue;
+                }
+                printf("Veuillez saisir le chemin du dossier contenant les fichiers XML a inserer : ");
+                char cheminDossier[100];
+                int resultScanFChemin = scanf("%s", cheminDossier);
+                if (resultScanFChemin < 1 ) {
+                    printf("Erreur lors de la saisie du chemin du dossier.\n");
+                    continue;
+                }
+                process_all_files_at_once(client,"actiaDataBase",nomCollection,cheminDossier);
+            }
+            else if(choixCreate == 5){
+                //Quitter le menu Create
+                continue;
+            }
             //insert_xml_into_collection(client,"actiaDataBase","testCollection","C:\\Users\\g.gonfiantini\\Desktop\\data\\FichiersXML\\FichiersXML8000\\Onvif_Metadata_C1000_2023-04-21_16-48-58.629.xml");
             //process_files_one_by_one(client,"actiaDataBase","testCollection","C:\\Users\\g.gonfiantini\\Desktop\\data\\FichiersXML\\FichiersXML104295");
             //process_all_files_at_once(client,"actiaDataBase","testCollection","C:\\Users\\g.gonfiantini\\Desktop\\data\\FichiersXML\\FichiersXML8000"); //Chargement des fichiers en mémoire
