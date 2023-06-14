@@ -19,14 +19,41 @@ Pour que le projet fonctionne, vous devez avoir les fichiers binaires des dépen
 
 Voici les chemins des fichiers binaires :
 
-C:\Users\Gaetan\Desktop\MongoDBC\Dependances\DriverJSON\jsoncpp2\build\install\bin
-C:\Users\Gaetan\Desktop\MongoDBC\Dependances\DriverMongoDB\mongo-c-driver-1.22.1\mongo-c-driver-1.22.1\build\install\bin
-A REPRENDRE ICI
+`VOTRE CHEMIN`\MongoDBC\Dependances\DriverJSON\jsoncpp2\build\install\bin
 
+`VOTRE CHEMIN`\MongoDBC\Dependances\DriverMongoDB\mongo-c-driver-1.22.1\mongo-c-driver-1.22.1\build\install\bin
 
+`VOTRE CHEMIN`\MongoDBC\Dependances\DriverXML\bin
 
-### Les étapes pour l'IDE Visual Studio 2019
+`VOTRE CHEMIN`\MongoDBC\Dependances\MSVRC100
 
+`VOTRE CHEMIN`\MongoDBC\Dependances\Zlib
+
+Pour ajouter ces chemins dans vos variables d'environnement, vous devez suivre les étapes suivantes :
+
+1. Tapez dans la barre de recherche de votre PC "**variables d'environnement**" et cliquez sur "**Modifier les variables d'environnement système**".
+
+![variableEnvironnement.png](Documentation%2FimgREADME%2FBINAIRE%2FvariableEnvironnement.png)
+
+2. Cliquez sur "**Variables d'environnement**" _(surligné sur la capture d'écran en bleu)_.
+
+![FenetreVariable1.png](Documentation%2FimgREADME%2FBINAIRE%2FFenetreVariable1.png)
+
+3. Dans la fenêtre qui s'ouvre, sélectionnez la variable "**Path**" _(surligné sur la capture d'écran en rose)_ et cliquez sur "**Modifier**".
+
+![FenetreVariable2.png](Documentation%2FimgREADME%2FBINAIRE%2FFenetreVariable2.png)
+
+4. Dans la fenêtre qui s'ouvre, cliquez sur "**Nouveau**" _(surligné sur la capture d'écran en vert)_ et ajoutez les chemins des fichiers binaires.
+
+![FenetreVariable3.png](Documentation%2FimgREADME%2FBINAIRE%2FFenetreVariable3.png)
+
+Une fois que vous avez ajouté les chemins des fichiers binaires, vous pouvez fermer toutes les fenêtres.
+
+Redémarrez votre PC pour que les changements soient pris en compte.
+
+### Configuration du projet avec Visual Studio 2019
+
+Maintenant que vous avez les fichiers binaires dans vos variables d'environnement, vous pouvez configurer le projet avec Visual Studio 2019.
 
 1. Décompresser le dossier "**MongoDBC.zip**" dans un dossier de votre choix.
 
