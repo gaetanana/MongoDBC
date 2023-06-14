@@ -152,10 +152,6 @@ int main() {
                 //Quitter le menu Create
                 continue;
             }
-            //insert_xml_into_collection(client,"actiaDataBase","testCollection","C:\\Users\\g.gonfiantini\\Desktop\\data\\FichiersXML\\FichiersXML8000\\Onvif_Metadata_C1000_2023-04-21_16-48-58.629.xml");
-            //process_files_one_by_one(client,"actiaDataBase","testCollection","C:\\Users\\g.gonfiantini\\Desktop\\data\\FichiersXML\\FichiersXML104295");
-            //process_all_files_at_once(client,"actiaDataBase","testCollection","C:\\Users\\g.gonfiantini\\Desktop\\data\\FichiersXML\\FichiersXML8000"); //Chargement des fichiers en mémoire
-
         }
         else if(choix == 2){
             printf("\n=======================================================================\n");
@@ -198,16 +194,27 @@ int main() {
 
             int choixDelete;
             printf("Votre choix : ");
-            scanf("%d", &choixDelete);
+            int resultScanf = scanf("%d", &choixDelete);
+            if (resultScanf < 1 || choixDelete < 1 || choixDelete > 2) {
+                printf("Choix invalide. Veuillez entrer un nombre entre 1 et 2.\n");
+                continue;
+            }
             printf("\n");
+
             if(choixDelete == 1){
                 printf("Veuillez saisir le nom de la collection a vider : ");
                 char nomCollection[100];
-                scanf("%s", nomCollection);
+                int resultScanf = scanf("%s", nomCollection);
+                if (resultScanf < 1 ) {
+                    printf("Erreur lors de la saisie du nom de la collection.\n");
+                    continue;
+                }
                 delete_all_documents_from_collection(client,"actiaDataBase",nomCollection);
             }
-
-
+            else if(choixDelete == 2){
+                //Quitter le menu Delete
+                continue;
+            }
         }
         else if(choix ==5){
             printf("========================================================\n");
@@ -217,6 +224,5 @@ int main() {
         }
 
     }
-
     return 0;
 }
