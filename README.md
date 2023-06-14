@@ -97,8 +97,43 @@ Une console s'ouvre et affiche le résultat de l'exécution du programme.
 L'application contient 4 dossiers qui contiennent chacun un fichier :
 
 - **CREATE** : Contient le fichier **create.c** qui contient toutes les fonctions qui permettent de simuler les requêtes de création de données dans la base de données.
-- **UPDATE** : Contient le fichier **update.c** qui contient toutes les fonctions qui permettent de simuler les requêtes de mise à jour de données dans la base de données.
+
+Les fonctions disponibles dans ce fichier sont les suivantes :
+
+**Fonction n°1 :** `void createCollection(mongoc_client_t *client,const char *db_name,const char* nomCollection)`
+
+Cette fonction permet de créer une collection dans la base de données qui est passé en paramètre de la fonction.
+
+**Fonction n°2 :** `void insert_document_into_collection (mongoc_client_t *client,const char *db_name, const char *collection_name,const char* value)`
+
+Cette fonction permet d'insérer un document dans une collection et une base de données qui sont passées en paramètre de la fonction.
+
+**Fonction n°3 :** `void insert_xml_into_collection(mongoc_client_t *client,const char *db_name, const char *collection_name,const char* pathXML)`
+
+Cette fonction permet d'insérer un document XML dans une collection et une base de données qui sont passées en paramètre de la fonction.
+
+**Fonction n°4 :** `void process_files_one_by_one(mongoc_client_t *client,const char *db_name,const char *collection_name,const char* dirPath)`
+
+Cette fonction permet d'insérer tous les documents XML d'un dossier dans une collection et une base de données qui sont passées en paramètre de la fonction.
+Mais cette fonction insère les documents un par un.
+
+
+**Fonction n°5 :** `void process_all_files_at_once(mongoc_client_t *client,const char* db_name,const char* collection_name,const char* dirPath)`
+
+Cette fonction permet d'insérer tous les documents XML d'un dossier dans une collection et une base de données qui sont passées en paramètre de la fonction.
+Mais cette fonction charge les fichiers XML au préalable dans un tableau, puis insère tous les documents en une seule fois.
+
+REPRENDRE ICI
+
 - **READ** : Contient le fichier **read.c** qui contient toutes les fonctions qui permettent de simuler les requêtes de lecture de données dans la base de données.
+
+Les fonctions disponibles dans ce fichier sont les suivantes :
+
+
+- **UPDATE** : Contient le fichier **update.c** qui contient toutes les fonctions qui permettent de simuler les requêtes de mise à jour de données dans la base de données.
+
+
+
 - **DELETE** : Contient le fichier **delete.c** qui contient toutes les fonctions qui permettent de simuler les requêtes de suppression de données dans la base de données.
 
 Un fichier **main.c** est présent, englobant toutes les fonctions de l'application. Il est complété par une interface utilisateur en console, qui permet d'exploiter ces fonctions.
