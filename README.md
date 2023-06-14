@@ -17,6 +17,13 @@ Voici le lien du fichier ZIP du projet : https://drive.google.com/file/d/1TugkuC
 
 Pour que le projet fonctionne, vous devez avoir les fichiers binaires des dépendances dans vos variables d'environnement.
 
+Voici les chemins des fichiers binaires :
+
+C:\Users\Gaetan\Desktop\MongoDBC\Dependances\DriverJSON\jsoncpp2\build\install\bin
+C:\Users\Gaetan\Desktop\MongoDBC\Dependances\DriverMongoDB\mongo-c-driver-1.22.1\mongo-c-driver-1.22.1\build\install\bin
+A REPRENDRE ICI
+
+
 
 ### Les étapes pour l'IDE Visual Studio 2019
 
