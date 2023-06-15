@@ -4,7 +4,7 @@
 
 ### Prérequis
 
-- Avoir le dossier compressé "**MongoDBC.zip**" (Vous devez forcément avoir le fichier ZIP, car dans le dépôt GitHub, il n'y a pas le driver).
+- Avoir le dossier compressé "**MongoDBC.zip**" (Vous devez forcément avoir le fichier ZIP, car dans le dépôt GitHub, il n'y a pas le driver car il est trop lourd).
 
 Voici le lien du fichier ZIP du projet : https://drive.google.com/file/d/1TugkuCtDq_Uv2fcGbVKgxX6McpF0cH0c/view?usp=sharing
 
