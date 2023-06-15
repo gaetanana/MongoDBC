@@ -256,7 +256,7 @@ int main() {
                     printf("Erreur lors de la saisie de la nouvelle valeur.\n");
                     continue;
                 }
-                update_document_from_collection("actiaDataBase",nomCollection,idDocument,typeDocument);
+                update_document_from_collection(client,"actiaDataBase",nomCollection,idDocument,typeDocument);
             }
             else if(choixUpdate == 2){
                 printf("Veuillez saisir le nom de la collection dans laquelle modifier les documents : ");

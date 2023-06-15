@@ -7,17 +7,13 @@
 /**
 * Cette fonction permet modifier un document dans une collection grâce à son id
 */
-void update_document_from_collection (const char *db_name, const char *collection_name, const char* id, const char* value) {
-    mongoc_client_t *client;
+void update_document_from_collection (mongoc_client_t *client,const char *db_name, const char *collection_name, const char* id, const char* value) {
     mongoc_collection_t *collection;
     bson_error_t error;
     bson_oid_t oid;
     bson_t *query;
     bson_t *update;
 
-    mongoc_init ();
-
-    client = mongoc_client_new ("mongodb://root:examplepassword@localhost:27017");
     collection = mongoc_client_get_collection (client, db_name, collection_name);
 
     query = bson_new ();
@@ -33,8 +29,6 @@ void update_document_from_collection (const char *db_name, const char *collectio
     bson_destroy (update);
     bson_destroy (query);
     mongoc_collection_destroy (collection);
-    mongoc_client_destroy (client);
-    mongoc_cleanup ();
 }
 
 /**
