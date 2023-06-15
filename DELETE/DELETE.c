@@ -10,7 +10,6 @@ void delete_all_documents_from_collection(mongoc_client_t *client,const char *db
     bson_t *query;
     clock_t begin = clock(), end;
     double time_spent;
-    mongoc_init();
     if (!client) {
         fprintf(stderr, "Failed to parse URI.\n");
         return;
