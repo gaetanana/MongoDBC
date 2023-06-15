@@ -280,6 +280,7 @@ void process_files_one_by_one(mongoc_client_t *client,const char *db_name,const 
 
     end = clock();
     time_spent = (double)(end - begin) / CLOCKS_PER_SEC; // Calcul du temps d'exécution total.
+    mongoc_collection_destroy (collection); // Libération de la mémoire allouée pour la collection MongoDB.
     printf("Temps d'execution: %f secondes\n", time_spent); // Impression du temps d'exécution.
     printf("Temps de conversion: %f secondes\n", tempsConversion); // Impression du temps total de conversion.
 }
@@ -388,6 +389,8 @@ void process_all_files_at_once(mongoc_client_t *client,const char* db_name,const
         bson_destroy(documents[i]);
     }
     free(documents);
+    mongoc_collection_destroy (collection); // Libération de la mémoire allouée pour la collection MongoDB.
+
 }
 
 
