@@ -15,7 +15,7 @@ void read_all_documents(mongoc_client_t *client,const char *db_bame, const char 
     mongoc_cursor_t *cursor;
     const bson_t *doc;
 
-    clock_t begin = 0, end;
+    clock_t begin = clock(), end;
     double time_spent;
 
     // Récupérer la collection
@@ -63,7 +63,7 @@ void read_filtered_documentsHuman(mongoc_client_t *client,const char *db_name, c
     bson_t *query;
     char *str;
 
-    clock_t begin = 0, end;
+    clock_t begin = clock(), end;
     double time_spent;
 
     collection = mongoc_client_get_collection(client, db_name, collection_name);

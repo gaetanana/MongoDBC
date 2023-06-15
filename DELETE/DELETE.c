@@ -8,7 +8,7 @@ void delete_all_documents_from_collection(mongoc_client_t *client,const char *db
     bson_error_t error;
     bson_t *command, reply;
     bson_t *query;
-    clock_t begin = 0, end;
+    clock_t begin = clock(), end;
     double time_spent;
     mongoc_init();
     if (!client) {
@@ -33,6 +33,4 @@ void delete_all_documents_from_collection(mongoc_client_t *client,const char *db
     bson_free(str);
     bson_destroy(query);
     mongoc_collection_destroy(collection);
-    mongoc_client_destroy(client);
-    mongoc_cleanup();
 }

@@ -43,7 +43,7 @@ void update_all_document_type(mongoc_client_t *client,const char* db_name,const 
     bson_t *update_reply;
     bson_t *query = NULL;
 
-    clock_t begin = 0, end;
+    clock_t begin = clock(), end;
     double time_spent;
     collection = mongoc_client_get_collection(client, db_name, nomCollection);
     if (!collection) {
