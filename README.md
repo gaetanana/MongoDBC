@@ -123,29 +123,40 @@ Mais cette fonction insère les documents un par un.
 Cette fonction permet d'insérer tous les documents XML d'un dossier dans une collection et une base de données qui sont passées en paramètre de la fonction.
 Mais cette fonction charge les fichiers XML au préalable dans un tableau, puis insère tous les documents en une seule fois.
 
-REPRENDRE ICI
 
 - **READ** : Contient le fichier **read.c** qui contient toutes les fonctions qui permettent de simuler les requêtes de lecture de données dans la base de données.
 
 Les fonctions disponibles dans ce fichier sont les suivantes :
 
+Fonction n°1 : `void read_all_documents(mongoc_client_t *client,const char *db_bame, const char *collection_name)`.
+
+Cette fonction permet de lire tous les documents d'une collection, d'une base de données qui sont passées en paramètre de la fonction.
+
+Fonction n°2 : `void read_filtered_documentsHuman(mongoc_client_t *client,const char *db_name, const char *collection_name)`.
+
+Cette fonction permet de lire tous les documents d'une collection avec un filtre. Le filtre est appliqué sur le champ "human" du document.
 
 - **UPDATE** : Contient le fichier **update.c** qui contient toutes les fonctions qui permettent de simuler les requêtes de mise à jour de données dans la base de données.
 
+Fonction n°1 : `void update_document_from_collection (const char *db_name, const char *collection_name, const char* id, const char* value)`
 
+Cette fonction permet de mettre à jour un document d'une collection grâce à son ID.
+
+Fonction n°2 : `void update_all_document_type(mongoc_client_t *client,const char* db_name,const char* nomCollection, const char* newValueType)`
+
+Cette fonction permet de mettre à jour tous les documents d'une collection grâce à leur type.
 
 - **DELETE** : Contient le fichier **delete.c** qui contient toutes les fonctions qui permettent de simuler les requêtes de suppression de données dans la base de données.
+
+Fonction n°1 : `void delete_all_documents_from_collection(mongoc_client_t *client,const char *db_name, const char *collection_name)`
+
+Cette fonction permet de supprimer tous les documents d'une collection.
 
 Un fichier **main.c** est présent, englobant toutes les fonctions de l'application. Il est complété par une interface utilisateur en console, qui permet d'exploiter ces fonctions.
 
 Un fichier **CmakeList.txt** est présent, il permet de build le projet.
 
 ### Informations complémentaires
-
-Pour l'instant, l'application ne possède pas de console interactive. 
-Cela est en cours de développement. 
-Cependant, en attendant, vous pouvez tester les fonctions déjà présentes dans le programme en 
-les commentant et en les décommentant.
 
 Actuellement, dans le main vous avez toutes les fonctions disponibles et il y 3 arguments qui sont obligatoires :
 

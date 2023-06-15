@@ -16,6 +16,16 @@ int main() {
     //client = mongoc_client_new("mongodb://root:examplepassword@localhost:27017"); //Connection à la base de données Docker
     client = mongoc_client_new("mongodb://localhost:27017"); //Connection au serveur local
 
+    bson_error_t error;
+    bson_t *command, reply;
+    command = BCON_NEW("ping", BCON_INT32(1));
+    bool retval = mongoc_client_command_simple(client, "admin", command, NULL, &reply, &error);
+
+    if (!retval) {
+        // Connection echouée
+        fprintf(stderr, "%s\n", error.message);
+        return EXIT_FAILURE;
+    }
     //---------------------- Fonctions disponibles ----------------------//
 
     /**Partie création de documents*/
@@ -36,7 +46,10 @@ int main() {
     //delete_all_documents_from_collection(client,"actiaDataBase","testCollection");
 
    //----------------------------------------- Application pour l'utilisateur -----------------------------------------//
+
+
     while (true) {
+        printf("\n");
         printf("\n========================================================\n");
         printf("||             Application MongoDB en C               ||\n");
         printf("========================================================\n");
@@ -310,5 +323,8 @@ int main() {
         }
 
     }
+    mongoc_cleanup(); // Libération de la mémoire
+
+
     return 0;
 }

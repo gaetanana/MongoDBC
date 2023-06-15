@@ -99,8 +99,6 @@ void createCollection(mongoc_client_t *client,const char *db_name,const char* no
     char **strv;
     int i;
 
-    mongoc_init (); // Initialisation du driver MongoDB C.
-
     // Récupération de la base de données spécifiée
     database = mongoc_client_get_database(client, db_name);
 
@@ -128,7 +126,6 @@ void createCollection(mongoc_client_t *client,const char *db_name,const char* no
     bson_destroy (doc); // Libération de la mémoire allouée pour le document BSON.
     mongoc_collection_destroy (collection); // Libération de la mémoire allouée pour la collection MongoDB.
     mongoc_database_destroy(database); // Libération de la mémoire allouée pour la base de données MongoDB.
-    mongoc_cleanup (); // Nettoyage du driver MongoDB C.
     printf("Collection %s creee avec succes !\n",nomCollection);
 }
 
@@ -142,8 +139,6 @@ void insert_document_into_collection (mongoc_client_t *client,const char *db_nam
     bson_error_t error; // Pour stocker l'information d'erreur.
     bson_t *doc;
 
-    mongoc_init (); // Initialisation du driver MongoDB C.
-
     // Récupération de la collection spécifiée dans la base de données spécifiée.
     collection = mongoc_client_get_collection (client, db_name, collection_name);
 
@@ -156,7 +151,6 @@ void insert_document_into_collection (mongoc_client_t *client,const char *db_nam
     }
     bson_destroy (doc); // Destruction du document BSON.
     mongoc_collection_destroy (collection); // Destruction de la collection.
-    mongoc_cleanup (); // Nettoyage du driver MongoDB C.
     printf("Insertion reussie\n");
 }
 
